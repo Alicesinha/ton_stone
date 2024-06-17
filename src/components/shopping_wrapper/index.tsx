@@ -6,7 +6,7 @@ import { getProducts } from '@/states/actions/products.actions'
 import LoadingSpinner from '@/components/loading'
 import { ErrorToast } from '@/utils/toast'
 
-export default function ShoppingCard() {
+export default function ShoppingWrapper() {
 	const {
 		state: {
 			products: { products },

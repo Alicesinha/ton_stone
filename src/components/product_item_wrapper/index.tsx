@@ -7,6 +7,7 @@ import { truncateText } from '@/utils/truncateText'
 import { IProductItem } from '@interfaces/product'
 import Image from 'next/image'
 import { TrashIcon, PlusCircleIcon } from '@heroicons/react/20/solid'
+import { IconButtonStyled } from '../icon_button'
 
 interface ProductItemProps {
 	itemData: IProductItem | ICardStore
@@ -52,8 +53,10 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 					{!productToCard.find(
 						(product: ICardStore) => product.id === itemData.id,
 					) && (
-						<button
-							className='px-3 py-1 bg-gray-600 text-white text-sm font-semibold rounded flex items-center justify-center gap-2'
+						<IconButtonStyled
+							borderOption='true'
+							color='primary'
+							type='button'
 							onClick={() =>
 								handleAddProduct({
 									id: itemData.id,
@@ -65,13 +68,15 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 						>
 							Add
 							<PlusCircleIcon className='h-5 w-5' />
-						</button>
+						</IconButtonStyled>
 					)}
 					{productToCard.find(
 						(product: ICardStore) => product.id === itemData.id,
 					) && (
-						<button
-							className='px-3 py-1 bg-red-600 text-white text-sm font-semibold rounded flex items-center justify-center gap-2'
+						<IconButtonStyled
+							borderOption='true'
+							color='error'
+							type='button'
 							onClick={() =>
 								handleRemoveProduct({
 									id: itemData.id,
@@ -83,7 +88,7 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 						>
 							Remove
 							<TrashIcon className='h-5 w-5' />
-						</button>
+						</IconButtonStyled>
 					)}
 				</div>
 			</div>
