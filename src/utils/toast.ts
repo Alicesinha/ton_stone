@@ -1,6 +1,5 @@
 'use client'
 import { toast } from 'react-toastify'
-
 import 'react-toastify/dist/ReactToastify.css'
 
 export function SuccessToast(message: string) {
@@ -12,7 +11,6 @@ export function SuccessToast(message: string) {
 		draggable: true,
 	})
 }
-
 export function WarningToast(message: string) {
 	toast.warn(message, {
 		position: 'top-center',
@@ -22,7 +20,6 @@ export function WarningToast(message: string) {
 		draggable: true,
 	})
 }
-
 export function ErrorToast(message: string) {
 	toast.error(message, {
 		position: 'top-center',

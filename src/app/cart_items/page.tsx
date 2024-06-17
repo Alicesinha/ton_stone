@@ -4,8 +4,9 @@ import React from 'react'
 import ProductCard from '@/components/product_item_wrapper'
 import { ArrowLeftCircleIcon } from '@heroicons/react/16/solid'
 import Link from 'next/link'
+import { IconButtonStyled } from '@/components/icon_button'
 
-export default function CartWrapper() {
+export default function HeaderCart() {
 	const {
 		state: {
 			productToCard: { productToCard },
@@ -37,14 +38,15 @@ export default function CartWrapper() {
 				<p className='mb-0 text-1xl text text-black '>
 					Total: {productToCard.reduce((acc, item) => acc + item.price, 0)}
 				</p>
-				<button
-					className={`${
-						productToCard.length === 0 ? 'bg-gray-400' : 'bg-primary'
-					} text-white p-2 rounded-lg`}
+				<IconButtonStyled
+					borderOption='true'
+					color='success'
+					onClick={() => console.log('Proceed to checkout')}
+					type='button'
 					disabled={productToCard.length === 0}
 				>
 					Proceed to checkout
-				</button>
+				</IconButtonStyled>
 			</div>
 		</div>
 	)

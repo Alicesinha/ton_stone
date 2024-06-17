@@ -6,7 +6,7 @@ import { getProducts } from '@/states/actions/products.actions'
 import LoadingSpinner from '@/components/loading'
 import { ErrorToast } from '@/utils/toast'
 
-export default function ShoppingCard() {
+export default function ShoppingWrapper() {
 	const {
 		state: {
 			products: { products },
@@ -31,14 +31,17 @@ export default function ShoppingCard() {
 	}, [])
 
 	return (
-		<div className='grid grid-cols-2 sm:grid-cols-4 gap-4 border rounded-lg p-4'>
-			<span>Product Item</span>
-			{loading && <LoadingSpinner />}
-			{products &&
-				products.length > 0 &&
-				products.map(product => (
-					<ProductCard key={product.id} itemData={product} />
-				))}
-		</div>
+		<>
+			<span className='text-1xl text text-black text-end'>Product Items</span>
+
+			<div className='grid grid-cols-2 sm:grid-cols-4 gap-4 border rounded-lg p-4'>
+				{loading && <LoadingSpinner />}
+				{products &&
+					products.length > 0 &&
+					products.map(product => (
+						<ProductCard key={product.id} itemData={product} />
+					))}
+			</div>
+		</>
 	)
 }

@@ -1,10 +1,9 @@
 'use client'
-import { useAppState } from '@/context/AppState'
 import React from 'react'
 import { ShoppingBagIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 
-export default function CartWrapper() {
+export default function HeaderCart() {
 	return (
 		<div className='py-2 px-3 flex justify-end bg-custom-green'>
 			<Link href={'/cart_items'}>

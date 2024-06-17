@@ -1,11 +1,9 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ShoppingCard from './page'
+import ShoppingWrapper from '.'
 import { useAppState } from '@/context/AppState'
 import { getProducts } from '@/states/actions/products.actions'
-import ProductCard from '@/components/product_item_wrapper'
-import LoadingSpinner from '@/components/loading'
 import { IProductItem } from '@/interfaces/product'
 
 jest.mock('@/context/AppState', () => ({
@@ -34,7 +32,7 @@ const mockAppState = {
 	dispatch: mockDispatch,
 }
 
-describe('ShoppingCard', () => {
+describe('ShoppingWrapper', () => {
 	beforeEach(() => {
 		;(useAppState as jest.Mock).mockReturnValue(mockAppState)
 	})
@@ -44,7 +42,7 @@ describe('ShoppingCard', () => {
 			return new Promise(resolve => setTimeout(() => resolve([]), 100))
 		})
 
-		render(<ShoppingCard />)
+		render(<ShoppingWrapper />)
 
 		expect(screen.getByText('Loading...')).toBeInTheDocument()
 		await waitFor(() =>
@@ -84,10 +82,10 @@ describe('ShoppingCard', () => {
 			return Promise.resolve(products)
 		})
 
-		render(<ShoppingCard />)
+		render(<ShoppingWrapper />)
 
 		await waitFor(() => {
-			expect(screen.getAllByText('Product Item')).toHaveLength(1)
+			expect(screen.getAllByText('Product Items')).toHaveLength(1)
 		})
 	})
 
@@ -97,7 +95,7 @@ describe('ShoppingCard', () => {
 			return Promise.reject(new Error(errorMessage))
 		})
 
-		render(<ShoppingCard />)
+		render(<ShoppingWrapper />)
 
 		await waitFor(() => {
 			expect(screen.queryByText('Loading...')).not.toBeInTheDocument()

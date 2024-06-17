@@ -37,3 +37,4 @@ next-env.d.ts
 .ideia/
 .next/
 .vscode/
+*storybook.log
