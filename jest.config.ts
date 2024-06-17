@@ -90,7 +90,10 @@ const config: Config = {
 	// ],
 
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-	// moduleNameMapper: {},
+	moduleNameMapper: {
+		'^@/(.*)$': '<rootDir>/src/$1',
+		'\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+	},
 
 	// An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
 	// modulePathIgnorePatterns: [],
@@ -146,7 +149,7 @@ const config: Config = {
 	// snapshotSerializers: [],
 
 	// The test environment that will be used for testing
-	testEnvironment: 'jsdom',
+	testEnvironment: 'jest-environment-jsdom',
 
 	// Options that will be passed to the testEnvironment
 	// testEnvironmentOptions: {},

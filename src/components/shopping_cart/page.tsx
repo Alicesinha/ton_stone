@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useAppState } from '@/context/AppState'
 import { getProducts } from '@/states/actions/products.actions'
 import LoadingSpinner from '@/components/loading'
+import { ErrorToast } from '@/utils/toast'
 
 export default function ShoppingCard() {
 	const {
@@ -19,7 +20,7 @@ export default function ShoppingCard() {
 			setLoading(true)
 			await getProducts(dispatch)
 		} catch (error) {
-			console.error(error)
+			ErrorToast('Failed to fetch products')
 		} finally {
 			setLoading(false)
 		}
@@ -31,8 +32,10 @@ export default function ShoppingCard() {
 
 	return (
 		<div className='grid grid-cols-2 sm:grid-cols-4 gap-4 border rounded-lg p-4'>
+			<span>Product Item</span>
 			{loading && <LoadingSpinner />}
-			{products.length > 0 &&
+			{products &&
+				products.length > 0 &&
 				products.map(product => (
 					<ProductCard key={product.id} itemData={product} />
 				))}
