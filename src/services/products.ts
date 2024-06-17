@@ -1,5 +1,5 @@
 import { IProductItem } from '@/interfaces/product'
-import { serviceAPI } from '@services/apiService'
+import { serviceAPI } from './apiService'
 
 const BaseUrl = 'https://fakestoreapi.com/'
 

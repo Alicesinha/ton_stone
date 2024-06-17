@@ -1,5 +1,5 @@
-import { APIError } from '@services/errorService'
 import axios, { AxiosRequestConfig } from 'axios'
+import { APIError } from './errorService'
 
 export async function serviceAPI<T>(
 	endpoint: string,

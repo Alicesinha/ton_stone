@@ -1,7 +1,7 @@
 'use client'
 import { ActionsEnum } from '@/enums/actions.enum'
-import { IProductItem } from '@interfaces/product'
-import { IActions } from '@interfaces/actions'
+import { IActions } from '@/interfaces/actions'
+import { IProductItem } from '@/interfaces/product'
 
 export interface IProductsReducer {
 	products: IProductItem[]
