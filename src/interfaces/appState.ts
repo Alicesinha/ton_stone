@@ -1,4 +1,4 @@
-import { IProductsReducer } from '@/states/reducers/eventos.reducer'
+import { IProductsReducer } from '@/states/reducers/products.reducer'
 
 export interface IStates<S, D> {
 	state: S

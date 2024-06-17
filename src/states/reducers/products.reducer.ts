@@ -11,7 +11,7 @@ export const productsInitialState: IProductsReducer = {
 	products: {} as ProductItem[],
 }
 
-export function eventoReducer(
+export function productsReducer(
 	state: IProductsReducer = productsInitialState,
 	action: IActions,
 ): IProductsReducer {

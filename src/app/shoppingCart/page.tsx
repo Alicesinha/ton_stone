@@ -1,20 +1,23 @@
 'use client'
 import ProductCard from '@/components/product_item_wrapper'
-import { ProductItem } from '@interfaces/product'
-import { getAllProducts } from '@/services/products'
 import { useEffect, useState } from 'react'
+import { useAppState } from '@/context/AppState'
+import { getProducts } from '@/states/actions/products.actions'
+import LoadingSpinner from '@/components/loading'
 
 export default function ShoppingCard() {
-	const [itemData, setItemData] = useState<ProductItem[]>([])
+	const {
+		state: {
+			products: { products },
+		},
+		dispatch,
+	} = useAppState()
 	const [loading, setLoading] = useState<boolean>(false)
 
-	const getProducts = async () => {
+	const getProductsToShow = async () => {
 		try {
 			setLoading(true)
-			const response = await getAllProducts()
-			if (response) {
-				setItemData(response)
-			}
+			await getProducts(dispatch)
 		} catch (error) {
 			console.error(error)
 		} finally {
@@ -23,14 +26,16 @@ export default function ShoppingCard() {
 	}
 
 	useEffect(() => {
-		getProducts()
+		getProductsToShow()
 	}, [])
 
 	return (
 		<>
-			{itemData.map(product => (
-				<ProductCard key={product.id} itemData={product} />
-			))}
+			{loading && <LoadingSpinner />}
+			{products.length > 0 &&
+				products.map(product => (
+					<ProductCard key={product.id} itemData={product} />
+				))}
 		</>
 	)
 }
