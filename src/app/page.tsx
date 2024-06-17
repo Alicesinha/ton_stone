@@ -1,7 +1,7 @@
 'use client'
 
 import CartWrapper from '@/components/cart_wrapper'
-import ShoppingCard from '../components/shoppingCart/page'
+import ShoppingCard from '../components/shopping_cart/page'
 
 export default function Home() {
 	return (

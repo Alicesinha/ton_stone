@@ -30,7 +30,7 @@ export default function ShoppingCard() {
 	}, [])
 
 	return (
-		<div className='grid grid-cols-2 sm:grid-cols-4 gap-4 border border-gray-300 rounded-lg p-4'>
+		<div className='grid grid-cols-2 sm:grid-cols-4 gap-4 border rounded-lg p-4'>
 			{loading && <LoadingSpinner />}
 			{products.length > 0 &&
 				products.map(product => (

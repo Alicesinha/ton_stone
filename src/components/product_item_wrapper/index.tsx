@@ -27,7 +27,7 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 	}
 
 	return (
-		<div className='max-w-sm bg-white shadow-lg rounded-lg overflow-hidden'>
+		<div className='max-w-sm bg-white shadow-sm rounded-lg overflow-hidden'>
 			<Image
 				src={itemData.image}
 				alt={itemData.title}
