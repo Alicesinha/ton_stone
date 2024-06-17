@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import ShoppingCard from './page'
+import ShoppingCard from '.'
 import { useAppState } from '@/context/AppState'
 import { getProducts } from '@/states/actions/products.actions'
 import ProductCard from '@/components/product_item_wrapper'
@@ -87,7 +87,7 @@ describe('ShoppingCard', () => {
 		render(<ShoppingCard />)
 
 		await waitFor(() => {
-			expect(screen.getAllByText('Product Item')).toHaveLength(1)
+			expect(screen.getAllByText('Product Items')).toHaveLength(1)
 		})
 	})
 

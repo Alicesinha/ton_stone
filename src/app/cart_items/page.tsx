@@ -5,7 +5,7 @@ import ProductCard from '@/components/product_item_wrapper'
 import { ArrowLeftCircleIcon } from '@heroicons/react/16/solid'
 import Link from 'next/link'
 
-export default function CartWrapper() {
+export default function HeaderCart() {
 	const {
 		state: {
 			productToCard: { productToCard },
