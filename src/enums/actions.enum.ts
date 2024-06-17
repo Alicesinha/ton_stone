@@ -3,4 +3,8 @@ export enum ActionsEnum {
 
 	// Products
 	GET_PRODUCTS = 'get-products',
+
+	// Cart
+	ADD_TO_CART = 'add-to-cart',
+	REMOVE_FROM_CART = 'remove-from-cart',
 }

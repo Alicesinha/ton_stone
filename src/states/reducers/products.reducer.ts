@@ -1,14 +1,14 @@
 'use client'
 import { ActionsEnum } from '@/enums/actions.enum'
-import { ProductItem } from '@interfaces/product'
+import { IProductItem } from '@interfaces/product'
 import { IActions } from '@interfaces/actions'
 
 export interface IProductsReducer {
-	products: ProductItem[]
+	products: IProductItem[]
 }
 
 export const productsInitialState: IProductsReducer = {
-	products: {} as ProductItem[],
+	products: {} as IProductItem[],
 }
 
 export function productsReducer(

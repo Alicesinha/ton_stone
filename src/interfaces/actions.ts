@@ -1,17 +1,27 @@
 import { ActionsEnum } from '@/enums/actions.enum'
-import { ProductItem } from './product'
+import { IProductItem } from './product'
+import { ICardStore } from './card'
 
-// export interface IActions<T> {
-// 	type: ActionsEnum
-// 	response: T
-// }
 interface SetAppStateAction {
 	type: ActionsEnum.SET_APP_STATE
-	response: { products: ProductItem[] } // ajuste conforme necessário
+	response: any
 }
 
 interface GetProductsAction {
 	type: ActionsEnum.GET_PRODUCTS
-	response: ProductItem[]
+	response: IProductItem[]
 }
-export type IActions = SetAppStateAction | GetProductsAction
+interface AddToCartAction {
+	type: ActionsEnum.ADD_TO_CART
+	response: ICardStore[]
+}
+interface RemoveFromCartAction {
+	type: ActionsEnum.REMOVE_FROM_CART
+	response: ICardStore[]
+}
+
+export type IActions =
+	| SetAppStateAction
+	| GetProductsAction
+	| AddToCartAction
+	| RemoveFromCartAction

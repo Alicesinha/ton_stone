@@ -1,3 +1,4 @@
+import { IProductToCardReducer } from '@/states/reducers/card.reducer'
 import { IProductsReducer } from '@/states/reducers/products.reducer'
 
 export interface IStates<S, D> {
@@ -6,4 +7,5 @@ export interface IStates<S, D> {
 }
 export interface IAppState {
 	products: IProductsReducer
+	productToCard: IProductToCardReducer
 }

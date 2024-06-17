@@ -20,7 +20,7 @@ interface Props {
 	children: ReactNode
 }
 
-const CadastroStateContext = createContext<IAppStateContext>(
+const tonStoneStateContext = createContext<IAppStateContext>(
 	{} as IAppStateContext,
 )
 
@@ -38,14 +38,14 @@ export function AppStateProvider({ children }: Props) {
 	}
 
 	return (
-		<CadastroStateContext.Provider value={{ dispatch, state }}>
+		<tonStoneStateContext.Provider value={{ dispatch, state }}>
 			{children}
-		</CadastroStateContext.Provider>
+		</tonStoneStateContext.Provider>
 	)
 }
 
 export function useAppState() {
-	const { state, dispatch } = useContext(CadastroStateContext)
+	const { state, dispatch } = useContext(tonStoneStateContext)
 
 	return {
 		state,
