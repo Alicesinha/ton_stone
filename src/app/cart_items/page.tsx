@@ -22,20 +22,29 @@ export default function CartWrapper() {
 					Shopping Cart
 				</h2>
 			</div>
-			<div className='bg-custom-light-gray'>
+
+			<div className=' grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-lg p-4'>
+				{productToCard.map(product => (
+					<ProductCard key={product.id} itemData={product} />
+				))}
+			</div>
+			<div className='bg-custom-light-gray flex flex-col py-3 text-end'>
 				<h3 className='mb-0 text-1xl text text-black text-end'>
 					{productToCard.length === 0
 						? 'No items in the cart'
 						: `Total items in the cart: ${productToCard.length}`}
 				</h3>
-				<p className='mb-0 text-1xl text text-black text-end'>
+				<p className='mb-0 text-1xl text text-black '>
 					Total: {productToCard.reduce((acc, item) => acc + item.price, 0)}
 				</p>
-			</div>
-			<div className='grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-lg p-4'>
-				{productToCard.map(product => (
-					<ProductCard key={product.id} itemData={product} />
-				))}
+				<button
+					className={`${
+						productToCard.length === 0 ? 'bg-gray-400' : 'bg-primary'
+					} text-white p-2 rounded-lg`}
+					disabled={productToCard.length === 0}
+				>
+					Proceed to checkout
+				</button>
 			</div>
 		</div>
 	)
