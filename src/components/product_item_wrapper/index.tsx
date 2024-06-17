@@ -6,6 +6,7 @@ import { addToCart, removeToCart } from '@/states/actions/addToCard.actions'
 import { truncateText } from '@/utils/truncateText'
 import { IProductItem } from '@interfaces/product'
 import Image from 'next/image'
+import { TrashIcon, PlusCircleIcon } from '@heroicons/react/20/solid'
 
 interface ProductItemProps {
 	itemData: IProductItem | ICardStore
@@ -26,7 +27,7 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 	}
 
 	return (
-		<div className=' max-w-sm bg-white shadow-lg rounded-lg overflow-hidden'>
+		<div className='max-w-sm bg-white shadow-lg rounded-lg overflow-hidden'>
 			<Image
 				src={itemData.image}
 				alt={itemData.title}
@@ -52,7 +53,7 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 						(product: ICardStore) => product.id === itemData.id,
 					) && (
 						<button
-							className='px-3 py-1 bg-gray-600 text-white text-sm font-semibold rounded'
+							className='px-3 py-1 bg-gray-600 text-white text-sm font-semibold rounded flex items-center justify-center gap-2'
 							onClick={() =>
 								handleAddProduct({
 									id: itemData.id,
@@ -62,14 +63,15 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 								})
 							}
 						>
-							Add to Cart
+							Add
+							<PlusCircleIcon className='h-5 w-5' />
 						</button>
 					)}
 					{productToCard.find(
 						(product: ICardStore) => product.id === itemData.id,
 					) && (
 						<button
-							className='px-3 py-1 bg-red-600 text-white text-sm font-semibold rounded'
+							className='px-3 py-1 bg-red-600 text-white text-sm font-semibold rounded flex items-center justify-center gap-2'
 							onClick={() =>
 								handleRemoveProduct({
 									id: itemData.id,
@@ -80,6 +82,7 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 							}
 						>
 							Remove
+							<TrashIcon className='h-5 w-5' />
 						</button>
 					)}
 				</div>

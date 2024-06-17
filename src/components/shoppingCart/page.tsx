@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { useAppState } from '@/context/AppState'
 import { getProducts } from '@/states/actions/products.actions'
 import LoadingSpinner from '@/components/loading'
-import CartWrapper from '@/components/cart_wrapper'
 
 export default function ShoppingCard() {
 	const {
@@ -33,9 +32,6 @@ export default function ShoppingCard() {
 	return (
 		<div className='grid grid-cols-2 sm:grid-cols-4 gap-4 border border-gray-300 rounded-lg p-4'>
 			{loading && <LoadingSpinner />}
-			{/* <>
-				<CartWrapper />
-			</> */}
 			{products.length > 0 &&
 				products.map(product => (
 					<ProductCard key={product.id} itemData={product} />
