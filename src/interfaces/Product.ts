@@ -1,3 +1,5 @@
+'use client'
+
 export interface IProductItem {
 	id: number
 	title: string

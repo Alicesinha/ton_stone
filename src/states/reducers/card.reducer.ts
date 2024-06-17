@@ -1,7 +1,7 @@
 'use client'
 import { ActionsEnum } from '@/enums/actions.enum'
-import { ICardStore } from '@interfaces/card'
-import { IActions } from '@interfaces/actions'
+import { IActions } from '@/interfaces/actions'
+import { ICardStore } from '@/interfaces/card'
 
 export interface IProductToCardReducer {
 	productToCard: ICardStore[]
