@@ -5,4 +5,5 @@ export interface ICardStore {
 	title: string
 	price: number
 	image: string
+	description?: string
 }

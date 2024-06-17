@@ -3,11 +3,12 @@
 import { useAppState } from '@/context/AppState'
 import { ICardStore } from '@/interfaces/card'
 import { addToCart, removeToCart } from '@/states/actions/addToCard.actions'
+import { truncateText } from '@/utils/truncateText'
 import { IProductItem } from '@interfaces/product'
 import Image from 'next/image'
 
 interface ProductItemProps {
-	itemData: IProductItem
+	itemData: IProductItem | ICardStore
 }
 export default function ProductCard({ itemData }: ProductItemProps) {
 	const {
@@ -25,25 +26,33 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 	}
 
 	return (
-		<div className='bg-gray-100 p-6'>
-			<div className=' max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden'>
-				<Image
-					src={itemData.image}
-					alt={itemData.title}
-					width={100}
-					height={100}
-					className='w-full h-48 object-cover'
-				/>
-				<div className='p-4'>
-					<h3 className='text-xl font-bold text-gray-800'>{itemData.title}</h3>
-					<p className='mt-2 text-gray-600'>{itemData.description}</p>
+		<div className=' max-w-sm bg-white shadow-lg rounded-lg overflow-hidden'>
+			<Image
+				src={itemData.image}
+				alt={itemData.title}
+				width={100}
+				height={100}
+				className='w-full h-48 object-cover'
+			/>
+			<div className='p-4'>
+				<h3 className='text-xl font-bold text-gray-800'>
+					{truncateText(`${itemData.title}`, 20)}
+				</h3>
+				<p className='mt-2 text-gray-600'>
+					{truncateText(`${itemData.description}`, 100)}
+				</p>
 
-					<div className='flex justify-between items-center mt-4'>
-						<span className='text-gray-700 font-bold text-xl'>
-							{itemData.price}
-						</span>
+				<div className='flex justify-between items-center mt-4'>
+					<span className='text-gray-700 font-bold text-xl'>
+						{itemData.price}
+					</span>
+				</div>
+				<div className='flex justify-between items-center mt-4'>
+					{!productToCard.find(
+						(product: ICardStore) => product.id === itemData.id,
+					) && (
 						<button
-							className='px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded'
+							className='px-3 py-1 bg-gray-600 text-white text-sm font-semibold rounded'
 							onClick={() =>
 								handleAddProduct({
 									id: itemData.id,
@@ -55,8 +64,12 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 						>
 							Add to Cart
 						</button>
+					)}
+					{productToCard.find(
+						(product: ICardStore) => product.id === itemData.id,
+					) && (
 						<button
-							className='px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded'
+							className='px-3 py-1 bg-red-600 text-white text-sm font-semibold rounded'
 							onClick={() =>
 								handleRemoveProduct({
 									id: itemData.id,
@@ -66,9 +79,9 @@ export default function ProductCard({ itemData }: ProductItemProps) {
 								})
 							}
 						>
-							Remove to Cart
+							Remove
 						</button>
-					</div>
+					)}
 				</div>
 			</div>
 		</div>
