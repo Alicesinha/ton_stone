@@ -7,10 +7,9 @@ import { truncateText } from '@/utils/truncateText'
 import Image from 'next/image'
 import { TrashIcon, PlusCircleIcon } from '@heroicons/react/20/solid'
 import { IconButtonStyled } from '../icon_button'
-import { IProductItem } from '@interfaces/product'
 
 interface ProductItemProps {
-	itemData: IProductItem | ICardStore
+	itemData: any | ICardStore
 }
 export default function ProductCard({ itemData }: ProductItemProps) {
 	const {
