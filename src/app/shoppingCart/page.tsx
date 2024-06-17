@@ -1,6 +1,6 @@
 'use client'
 import ProductCard from '@/components/product_item_wrapper'
-import { ProductItem } from '@/interfaces/Product'
+import { ProductItem } from '@interfaces/product'
 import { getAllProducts } from '@/services/products'
 import { useEffect, useState } from 'react'
 

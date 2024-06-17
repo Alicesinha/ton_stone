@@ -1,4 +1,6 @@
-import { ProductItem } from '@/interfaces/Product'
+'use client'
+
+import { ProductItem } from '@interfaces/product'
 import Image from 'next/image'
 
 interface ProductItemProps {
