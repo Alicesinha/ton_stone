@@ -1,10 +1,12 @@
 'use client'
 
-import ShoppingCard from './shoppingCart/page'
+import CartWrapper from '@/components/cart_wrapper'
+import ShoppingCard from '../components/shopping_cart/page'
 
 export default function Home() {
 	return (
-		<main className='flex min-h-screen flex-col items-center justify-between p-24'>
+		<main className=' min-h-screen'>
+			<CartWrapper />
 			<ShoppingCard />
 		</main>
 	)
