@@ -4,10 +4,10 @@ import { useAppState } from '@/context/AppState'
 import { ICardStore } from '@/interfaces/card'
 import { addToCart, removeToCart } from '@/states/actions/addToCard.actions'
 import { truncateText } from '@/utils/truncateText'
-import { IProductItem } from '@interfaces/product'
 import Image from 'next/image'
 import { TrashIcon, PlusCircleIcon } from '@heroicons/react/20/solid'
 import { IconButtonStyled } from '../icon_button'
+import { IProductItem } from '@/interfaces/product'
 
 interface ProductItemProps {
 	itemData: IProductItem | ICardStore
